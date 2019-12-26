@@ -10,8 +10,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
-    res.json('Hello World')
+var today = new Date();
+var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+app.get('/', (req, res) => {
+    res.json(`Hello World ${ date } ${ time }`);
 });
 
 app.get('/usuario', function(req, res) {
